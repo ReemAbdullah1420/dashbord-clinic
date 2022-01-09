@@ -27,6 +27,7 @@ function UserViewModal(props) {
               <strong>sepcialization :</strong> {user.specialization}
             </ListGroup.Item>
           ) : null}
+          
         </ListGroup>
       </Modal.Body>
       <Modal.Footer>
