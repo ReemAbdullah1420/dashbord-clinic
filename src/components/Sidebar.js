@@ -75,7 +75,7 @@ export default function PermanentDrawerLeft() {
         </List>
         <List style={{ marginTop: "auto" }}>
           {localStorage.tokenDashboardFilms ? (
-            <Link to="/login">
+            <Link to="/logout">
               <ListItem button>
                 <ListItemText primary="logout" sx={{ color: "white", textDecoration: "none" }} onClick={logout} />
               </ListItem>

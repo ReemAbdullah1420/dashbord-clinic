@@ -262,7 +262,7 @@ function App() {
       const response = await axios.post("http://localhost:5000/api/auth/login/admin", adminBody)
       localStorage.tokenDashboardClinic = response.data
       toast.success("login success")
-      navigate("/")
+      navigate("/section")
     } catch (error) {
       if (error.response) toast.error(error.response.data)
       else console.log(error)
@@ -376,7 +376,7 @@ function App() {
                 path="/programs"
                 element={localStorage.tokenDashboardClinic ? <Program /> : <Navigate to="/login" />}
               />
-              <Route path="/login" element={<Login />} />
+              <Route path="/login/admin" element={<Login />} />
             </Routes>
           </Box>
         </Box>
