@@ -28,11 +28,6 @@ function UserRow(props) {
             Delete
           </Button>
         ) : null}
-        {user.role === "Doctor" ? (
-          <Button variant="danger" onClick={() => setDeleteShow(true)}>
-            Delete
-          </Button>
-        ) : null}
       </td>
       <UserViewModal show={viewShow} setShow={setViewShow} user={user} />
       <UserDeleteModal show={deleteShow} setShow={setDeleteShow} userId={user._id} />

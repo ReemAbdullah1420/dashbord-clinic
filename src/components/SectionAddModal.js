@@ -52,6 +52,18 @@ function SectionAddModal(props) {
                 </Row>
               ))}
             </Col>
+            {/* <Col md="8">
+              {doctors.map(doctorsObject => (
+                <Row>
+                  <Col md="2">
+                    <Form.Check type="checkbox" name="services" value={doctorsObject._id} />
+                  </Col>
+                  <Col md="2">
+                    <span>{doctorsObject.service}</span>
+                  </Col>
+                </Row>
+              ))}
+            </Col> */}
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>

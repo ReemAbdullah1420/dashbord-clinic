@@ -59,9 +59,9 @@ export default function PermanentDrawerLeft() {
               <ListItemText primary="services" sx={{ color: "white", textDecoration: "none" }} />
             </ListItem>
           </Link>
-          <Link to="/programs">
+          <Link to="/doctor">
             <ListItem button>
-              <ListItemText primary="programs" sx={{ color: "white", textDecoration: "none" }} />
+              <ListItemText primary="doctor" sx={{ color: "white", textDecoration: "none" }} />
             </ListItem>
           </Link>
         </List>
@@ -74,7 +74,7 @@ export default function PermanentDrawerLeft() {
           </Link>
         </List>
         <List style={{ marginTop: "auto" }}>
-          {localStorage.tokenDashboardFilms ? (
+          {localStorage.tokenDashboardClinic ? (
             <Link to="/logout">
               <ListItem button>
                 <ListItemText primary="logout" sx={{ color: "white", textDecoration: "none" }} onClick={logout} />

@@ -12,14 +12,18 @@ import Login from "./pages/Login"
 import Users from "./pages/Users"
 import Service from "./pages/Service"
 import "./App.css"
-import Program from "./pages/Program"
+
+import Doctors from "./pages/Doctors"
 
 function App() {
   const [sections, setSection] = useState([])
   const [services, setServices] = useState([])
   const [users, setUsers] = useState([])
+  const [doctors, setdoctors] = useState([])
   const [programs, setPrograms] = useState([])
   const navigate = useNavigate()
+
+  console.log(doctors)
 
   const getSection = async () => {
     const response = await axios.get("http://localhost:5000/api/clinicDepartments")
@@ -32,6 +36,14 @@ function App() {
       },
     })
     setUsers(response.data)
+  }
+  const getDoctor = async () => {
+    const response = await axios.get("http://localhost:5000/api/auth/doctor", {
+      headers: {
+        Authorization: localStorage.tokenDashboardClinic,
+      },
+    })
+    setdoctors(response.data)
   }
   const getServices = async () => {
     const response = await axios.get("http://localhost:5000/api/services")
@@ -47,6 +59,7 @@ function App() {
     getUsers()
     getServices()
     getProgram()
+    getDoctor()
   }, [])
 
   const addSection = async e => {
@@ -303,14 +316,14 @@ function App() {
         email: form.elements.email.value,
         password: form.elements.password.value,
         image: form.elements.image.value,
-        sepcialization: form.elements.sepcialization.value,
+        specialization: form.elements.sepcialization.value,
       }
       await axios.post(`http://localhost:5000/api/auth/add-doctor`, doctorBody, {
         headers: {
           Authorization: localStorage.tokenDashboardClinic,
         },
       })
-      getUsers()
+      getDoctor()
       toast.success("add doctor success")
     } catch (error) {
       if (error.response) toast.error(error.response.data)
@@ -331,6 +344,20 @@ function App() {
       else console.log(error)
     }
   }
+  const deleteDoctor = async doctorId => {
+    try {
+      await axios.delete(`http://localhost:5000/api/auth/doctor/${doctorId}`, {
+        headers: {
+          Authorization: localStorage.tokenDashboardClinic,
+        },
+      })
+      toast.success("doctor deleted")
+      getDoctor()
+    } catch (error) {
+      if (error.response) toast.error(error.response.data)
+      else console.log(error)
+    }
+  }
   const logout = () => {
     localStorage.removeItem("tokenDashboardClinic")
   }
@@ -339,8 +366,10 @@ function App() {
     users,
     services,
     programs,
+    doctors,
     deleteSection,
     addSection,
+    deleteDoctor,
     editSection,
     login,
     logout,
@@ -367,16 +396,16 @@ function App() {
                 path="/sections"
                 element={localStorage.tokenDashboardClinic ? <Section /> : <Navigate to="/login" />}
               />
-              <Route path="/users" element={localStorage.tokenDashboardFilms ? <Users /> : <Navigate to="/login" />} />
+              <Route path="/users" element={localStorage.tokenDashboardClinic ? <Users /> : <Navigate to="/login" />} />
               <Route
                 path="/services"
                 element={localStorage.tokenDashboardClinic ? <Service /> : <Navigate to="/login" />}
               />
               <Route
-                path="/programs"
-                element={localStorage.tokenDashboardClinic ? <Program /> : <Navigate to="/login" />}
+                path="/doctor"
+                element={localStorage.tokenDashboardClinic ? <Doctors /> : <Navigate to="/login" />}
               />
-              <Route path="/login/admin" element={<Login />} />
+              <Route path="/login" element={<Login />} />
             </Routes>
           </Box>
         </Box>

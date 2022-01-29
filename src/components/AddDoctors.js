@@ -3,10 +3,10 @@ import { Button, Col, Form, Modal, Row } from "react-bootstrap"
 import ClinicContext from "../utils/ClinicContext"
 
 function AddDoctorModal(props) {
-  const { doctorshow, setShowDoctor } = props
+  const { show, setShow } = props
   const { addDoctor } = useContext(ClinicContext)
   return (
-    <Modal show={doctorshow} onHide={() => setShowDoctor(false)}>
+    <Modal show={show} onHide={() => setShow(false)}>
       <Form onSubmit={addDoctor}>
         <Modal.Header closeButton>
           <Modal.Title>Add doctor</Modal.Title>
@@ -63,10 +63,10 @@ function AddDoctorModal(props) {
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowDoctor(false)}>
+          <Button variant="secondary" onClick={() => setShow(false)}>
             Close
           </Button>
-          <Button variant="primary" type="submit" onClick={() => setShowDoctor(false)}>
+          <Button variant="primary" type="submit" onClick={() => setShow(false)}>
             Add Doctor
           </Button>
         </Modal.Footer>

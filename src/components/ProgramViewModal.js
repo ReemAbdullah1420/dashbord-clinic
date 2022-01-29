@@ -5,7 +5,7 @@ function ProgramViewModal(props) {
   return (
     <Modal show={show} onHide={() => setShow(false)}>
       <Modal.Header closeButton>
-        <Modal.Title>View program </Modal.Title>
+        <Modal.Title>View program</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <ListGroup>
@@ -16,7 +16,7 @@ function ProgramViewModal(props) {
             <strong>description:</strong> {program.description}
           </ListGroup.Item>
           <ListGroup.Item>
-            <strong>Image :</strong>{" "}
+            <strong>Image :</strong>
             <Image src={program.image} style={{ objectFit: "contain", height: "200px", width: "100%" }} />
           </ListGroup.Item>
         </ListGroup>

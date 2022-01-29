@@ -1,4 +1,4 @@
-import { Button, Image, ListGroup, Modal } from "react-bootstrap"
+import { Button, ListGroup, Modal } from "react-bootstrap"
 
 function ServicesViewModal(props) {
   const { show, setShow, service } = props
